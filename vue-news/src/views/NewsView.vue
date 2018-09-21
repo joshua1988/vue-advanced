@@ -1,17 +1,18 @@
 <template>
   <div>
-    news
+    <p v-for="news in this.$store.state.news" :key="news.id">
+      <a :href="news.url">{{ news.title }}</a><br>
+      <small>{{ news.time_ago }} by {{ news.domain }}</small>
+    </p>
   </div>
 </template>
 
 <script>
-import { fetchNews } from '../api/index.js';
-
 export default {
   created() {
-    fetchNews()
-      .then(response => console.log(response))
-      .catch(error => console.log(error));
+    this.$store.dispatch('FETCH_NEWS')
+      .then(() => console.log('success'))
+      .catch(() => console.log('fail'));
   }
 }
 </script>

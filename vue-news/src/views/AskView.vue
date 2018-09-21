@@ -1,17 +1,18 @@
 <template>
   <div>
-    ask
+    <p v-for="ask in this.$store.state.ask" :key="ask.id">
+      <a :href="ask.url">{{ ask.title }}</a><br>
+      <small>{{ ask.time_ago }} by {{ ask.domain }}</small>
+    </p>
   </div>
 </template>
 
 <script>
-import { fetchAsk } from '../api/index.js';
-
 export default {
   created() {
-    fetchAsk()
-      .then(response => console.log(response))
-      .catch(error => console.log(error));
+    this.$store.dispatch('FETCH_ASK')
+      .then(() => console.log('success'))
+      .catch(() => console.log('fail'));
   }
 }
 </script>
