@@ -1,15 +1,7 @@
 <template>
   <div class="home">
     <section class="header-container">
-      <div class="user-container">
-        <div>
-          <i class="fas fa-user-circle"></i>
-        </div>
-        <div class="user-description">
-          <router-link :to="'/user/' + userName">{{ userName }}</router-link>
-          <div class="time">{{ userTimeAgo }}, {{ contentPoints }} points</div>
-        </div>
-      </div>
+      <UserProfile :user-info="fetchedItem"></UserProfile>
     </section>
     <section>
       <h2>{{ userQuestion }}</h2>
@@ -18,15 +10,7 @@
     <section>
       <h3>Comments</h3>
       <div v-for="item in fetchedItem.comments" :key="item.id" class="content">
-        <div class="user-container">
-          <div>
-            <i class="fas fa-user-circle"></i>
-          </div>
-          <div class="user-description">
-            <router-link :to="`/user/${item.user}`">{{ item.user }}</router-link>
-            <div class="time">{{ item.time_ago }}</div>
-          </div>
-        </div>
+        <UserProfile :user-info="item"></UserProfile>
         <div v-html="item.content"></div>
       </div>
     </section>
@@ -35,8 +19,12 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import UserProfile from '../components/UserProfile.vue';
 
 export default {
+  components: {
+    UserProfile,
+  },
   created() {
     this.$emit('on:progress');
     const itemId = this.$route.params.id;
