@@ -28,11 +28,11 @@ export default new VueRouter({
       component: JobsView,
     },
     {
-      path: '/item',
+      path: '/item/:id',
       component: ItemView,
     },
     {
-      path: '/user',
+      path: '/user/:id',
       component: UserView,
     }
   ]
