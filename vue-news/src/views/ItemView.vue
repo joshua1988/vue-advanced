@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="home">
     <section class="header-container">
       <div class="user-container">
         <div>
@@ -7,13 +7,28 @@
         </div>
         <div class="user-description">
           <router-link :to="'/user/' + userName">{{ userName }}</router-link>
-          <div class="time">{{ userTimeAgo }}</div>
+          <div class="time">{{ userTimeAgo }}, {{ contentPoints }} points</div>
         </div>
       </div>
-      <h2>{{ userQuestion }}</h2>
     </section>
     <section>
+      <h2>{{ userQuestion }}</h2>
       <div v-html="userContent" class="content"></div>
+    </section>
+    <section>
+      <h3>Comments</h3>
+      <div v-for="item in fetchedItem.comments" :key="item.id" class="content">
+        <div class="user-container">
+          <div>
+            <i class="fas fa-user-circle"></i>
+          </div>
+          <div class="user-description">
+            <router-link :to="`/user/${item.user}`">{{ item.user }}</router-link>
+            <div class="time">{{ item.time_ago }}</div>
+          </div>
+        </div>
+        <div v-html="item.content"></div>
+      </div>
     </section>
   </div>
 </template>
@@ -30,25 +45,20 @@ export default {
       .catch(error => console.log('user fetch error', error));
   },
   computed: {
-    ...mapGetters(['fetchedItem']),
-    userName() {
-      return this.fetchedItem.user;
-    },
-    userTimeAgo() {
-      return this.fetchedItem.time_ago;
-    },
-    userQuestion() {
-      return this.fetchedItem.title;
-    },
-    userContent() {
-      return this.fetchedItem.content;
-    },
+    ...mapGetters([
+      'fetchedItem', 'userName', 'userTimeAgo', 
+      'userQuestion', 'userContent', 'contentPoints']),
   },
-
 }
 </script>
 
 <style scoped>
+.home {
+  padding: 0 1.8rem;
+}
+.header-container {
+  padding-top: 1rem;
+}
 .user-container {
   display: flex;
   align-items: center;
