@@ -3,7 +3,7 @@
     <progress-bar :loading="loading"></progress-bar>
     <tool-bar></tool-bar>
     <transition name="routing-fade" mode="out-in">
-      <router-view @on:progress="onProgress" @off:progress="offProgress"></router-view>
+      <router-view></router-view>
     </transition>
   </div>
 </template>
@@ -11,6 +11,7 @@
 <script>
 import ToolBar from './components/ToolBar.vue';
 import ProgressBar from './components/ProgressBar.vue';
+import bus from './utils/bus.js';
 
 export default {
   components: {
@@ -30,7 +31,10 @@ export default {
       this.loading = false;
     }
   },
-
+  created() {
+    bus.$on('on:progress', this.onProgress);
+    bus.$on('off:progress', this.offProgress);
+  }
 }
 </script>
 
