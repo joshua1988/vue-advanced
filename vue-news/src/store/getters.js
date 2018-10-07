@@ -5,6 +5,9 @@ export default {
   fetchedUser(state) {
     return state.user;
   },
+  fetchedList(state) {
+    return state.list;
+  },
   // ItemView
   userName(state) {
     return state.item.user;

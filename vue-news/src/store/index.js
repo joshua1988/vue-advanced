@@ -13,7 +13,8 @@ export default new Vuex.Store({
     ask: [],
     jobs: [],
     user: {},
-    item: {}
+    item: {},
+    list: [],
   },
   getters,
   mutations,

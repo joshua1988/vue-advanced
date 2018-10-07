@@ -29,13 +29,7 @@
 export default {
   computed: {
     listItems() {
-      if (this.$route.path === "/news") {
-        return this.$store.state.news;
-      } else if (this.$route.path === "/ask") {
-        return this.$store.state.ask;
-      } else if (this.$route.path === "/jobs") {
-        return this.$store.state.jobs;
-      }
+      return this.$store.getters.fetchedList;
     }
   }
 }

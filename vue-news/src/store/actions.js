@@ -3,7 +3,8 @@ import {
   fetchAsk,
   fetchJobs,
   fetchUser,
-  fetchItem
+  fetchItem,
+  fetchList
 } from '../api/index.js';
 
 export default {
@@ -22,5 +23,8 @@ export default {
   FETCH_ITEM({ commit }, itemId) {
     return fetchItem(itemId).then(res => commit('SET_ITEM', res.data));
   },
-
+  // hoc
+  FETCH_LIST({ commit }, listType) {
+    return fetchList(listType).then(res => commit('SET_LIST', res.data));
+  },
 }
