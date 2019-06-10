@@ -13,6 +13,7 @@ export default new VueRouter({
   routes: [
     {
       path: '/',
+      // redirect 될 수 있도록.
       redirect: '/news' 
     },
     {
