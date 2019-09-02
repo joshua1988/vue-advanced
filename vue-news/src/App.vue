@@ -3,6 +3,7 @@
     <ToolBar></ToolBar>
     <router-view></router-view>
   </div>
+  <!-- test -->
 </template>
 
 <script>
