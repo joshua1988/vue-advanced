@@ -1,18 +1,30 @@
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Render Function</title>
-</head>
-<body>
-  <div id="app"></div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script>
-    new Vue({
-      el: '#app',
-    })
-  </script>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Render Function</title>
+	</head>
+	<body>
+		<div id="app">
+			<!--인스턴스 영역-->
+			<!-- <p>{{ message }}</p> -->
+		</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script>
+			new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vue',
+				},
+				//template: '<p>{{message}}</p>',
+				render: function(createElemt) {
+					//return createElemt('태그이름', '태그 속성','하위태그 내용');
+					// return createElemt('p', 'Hello Vue');
+					return createElemt('p', this.message);
+				},
+			});
+		</script>
+	</body>
 </html>
