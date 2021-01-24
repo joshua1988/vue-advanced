@@ -21,7 +21,7 @@ export default new VueRouter({
       beforeEnter(routeTo, routeFrom, next) {
         bus.$emit('on:progress');
         store.dispatch('FETCH_LIST', routeTo.name)
-          .then(next())
+          .then(() => next())
           .catch((() => new Error('failed to fetch news items')));
       },
     },
@@ -32,7 +32,7 @@ export default new VueRouter({
       beforeEnter(routeTo, routeFrom, next) {
         bus.$emit('on:progress');
         store.dispatch('FETCH_LIST', routeTo.name)
-          .then(next())
+          .then(() => next())
           .catch((() => new Error('failed to fetch news items')));
       },
     },
@@ -43,7 +43,7 @@ export default new VueRouter({
       beforeEnter(routeTo, routeFrom, next) {
         bus.$emit('on:progress');
         store.dispatch('FETCH_LIST', routeTo.name)
-          .then(next())
+          .then(() => next())
           .catch((() => new Error('failed to fetch news items')));
       },
     },
