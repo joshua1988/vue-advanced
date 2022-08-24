@@ -32,6 +32,7 @@ const router = new createRouter({
         {
             path: '/user',
             component : UserView
+
         },
     ],
 
