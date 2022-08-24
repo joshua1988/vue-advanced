@@ -2,6 +2,8 @@ import {createRouter, createWebHistory} from 'vue-router'
 import NewsView from '../views/NewsView'
 import AskView from '../views/AskView'
 import JobsView from '../views/JobsView'
+import ItemView from "../views/ItemView"
+import UserView from "../views/UserView";
 
 
 const router = new createRouter({
@@ -22,7 +24,15 @@ const router = new createRouter({
         {
             path: '/jobs',
             component : JobsView
-        }
+        },
+        {
+            path: '/item',
+            component : ItemView
+        },
+        {
+            path: '/user',
+            component : UserView
+        },
     ],
 
 })
