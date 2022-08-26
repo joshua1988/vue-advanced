@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { fetchAskList } from '../api/index'
+import { fetchAskList } from '../api/common'
 export default {
   name: "AskView",
   data() {

@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import {fetchJobsList} from "../api/index"
+import {fetchJobsList} from "../api/common"
 export default {
   name: "JobsView",
   data() {
@@ -13,7 +13,9 @@ export default {
   },
   created() {
     fetchJobsList()
-        .then(response => this.users = response.data)
+        .then(response => {
+          this.users = response.data
+        })
         .catch(error => console.log(error));
   },
 

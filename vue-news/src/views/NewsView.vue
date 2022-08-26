@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import { fetchNewList } from '../api/index'
 export default {
   name: "NewsView",
   data() {
@@ -14,18 +13,10 @@ export default {
     }
   },
   created() {
-    fetchNewList()
-        .then(response => {
-          this.users = response.data;
-          console.log(response);
-        })
-        .catch(error => console.log(error));
-    this.test();
+    this.$store.dispatch('FETCH_NEWS');
   },
   methods: {
-    test : function() {
-      console.log(this.users);
-    }
+
   }
 }
 </script>
