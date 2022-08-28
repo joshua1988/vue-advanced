@@ -26,13 +26,12 @@ const router = new createRouter({
             component : JobsView
         },
         {
-            path: '/item',
+            path: '/item/:id',
             component : ItemView
         },
         {
-            path: '/user',
+            path: '/user/:id',
             component : UserView
-
         },
     ],
 

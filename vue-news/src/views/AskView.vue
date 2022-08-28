@@ -1,24 +1,24 @@
 <template>
-  <div>
-    <div v-for="user in users">{{user}}</div>
+
+  <div v-for="item in fetched_ask">
+    <router-link to="'/${item.url}'">{{ item.title }}</router-link>
+    <small>
+      <router-link :to="`/user/${item.user}`">{{item.user}}</router-link>
+      by {{item.time_ago}}
+    </small>
   </div>
 </template>
 
 <script>
-import { fetchAskList } from '../api/common'
+import {mapGetters} from 'vuex';
+
 export default {
   name: "AskView",
-  data() {
-    return {
-      users : [],
-    }
+  computed: {
+    ...mapGetters(['fetched_ask'])
   },
   created() {
-    fetchAskList()
-        .then(responwse => {
-          this.users = responwse.data;
-        })
-        .catch(error => console.log(error));
+    this.$store.dispatch('FETCH_ASK');
   }
 }
 </script>
