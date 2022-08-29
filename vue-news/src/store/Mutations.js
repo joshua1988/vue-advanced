@@ -10,5 +10,8 @@ export default {
     },
     FETCHED_USER(state, user){
         state.user = user;
+    },
+    FETCHED_ITEMS(state, item){
+        state.item = item;
     }
 }
