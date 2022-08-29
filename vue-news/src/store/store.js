@@ -1,25 +1,24 @@
-import { createStore } from "vuex"
-import { fetchNewList } from '../api/common';
+import { createStore, createLogger } from "vuex"
+import { fetchNewList, fetchAskList, fetchJobsList } from '../api/common';
+import mutations from '../store/mutations'
+import actions from '../store/actions'
+
 
 const vuex = new createStore({
     state: {
-        news: []
+        news: [],
+        ask: [],
+        jobs: []
     },
     getters: {
-
-    },
-    mutations: {
-
-    },
-    actions: {
-        FETCH_NEWS() {
-            fetchNewList()
-                .then(response => {
-                    console.log(response.data);
-                })
-                .catch(error => console.log(error));
+        fetchedJobs(state){
+            return state.jobs;
         }
-    }
+    },
+    mutations,
+    actions,
+    plugins: [ createLogger() ]
+
 })
 
 export { vuex };

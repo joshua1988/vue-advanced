@@ -1,17 +1,15 @@
 <template>
  <div>
-   <div v-for="user in users">{{user.title}}</div>
+   <p v-for="item in this.$store.state.news">
+     <a :href="item.url">{{item.title}}</a>
+     <small>{{item.time_ago}} by {{item.user}}</small>
+   </p>
  </div>
 </template>
 
 <script>
 export default {
   name: "NewsView",
-  data() {
-    return {
-      users: [],
-    }
-  },
   created() {
     this.$store.dispatch('FETCH_NEWS');
   },

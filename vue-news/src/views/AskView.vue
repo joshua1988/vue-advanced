@@ -1,25 +1,28 @@
 <template>
   <div>
-    <div v-for="user in users">{{user}}</div>
+<!--    <div v-for="ask in fetchedAsk">{{ask.title}}</div>-->
+    <p v-for="item in fetchedAsk">
+      <a :href="item.url">{{item.title}}</a>
+      <small>{{item.time_ago}} by {{item.domain}}</small>
+    </p>
   </div>
 </template>
 
 <script>
-import { fetchAskList } from '../api/common'
+import {mapState} from 'vuex';
+
 export default {
   name: "AskView",
-  data() {
-    return {
-      users : [],
-    }
-  },
   created() {
-    fetchAskList()
-        .then(responwse => {
-          this.users = responwse.data;
-        })
-        .catch(error => console.log(error));
+    this.$store.dispatch('FETCH_ASK');
+  },
+  computed : {
+    ...mapState({
+      fetchedAsk: state => state.ask
+    })
+
   }
+
 }
 </script>
 
