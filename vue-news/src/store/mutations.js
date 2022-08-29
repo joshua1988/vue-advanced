@@ -1,11 +1,14 @@
 export default {
-    SET_NEWS(state, data){
-        state.news = data;
+    FETCHED_NEWS(state, news){
+        state.news = news;
     },
-    SET_ASK(state, data){
-        state.ask = data;
+    FETCHED_ASK(state, ask){
+        state.ask = ask;
     },
-    SET_JOBS(state, data){
-        state.jobs = data;
+    FETCHED_JOBS(state, jobs){
+        state.jobs = jobs;
+    },
+    FETCHED_USER(state, user){
+        state.user = user;
     }
 }
