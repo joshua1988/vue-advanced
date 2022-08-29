@@ -1,28 +1,25 @@
 <template>
-  <div>
-<!--    <div v-for="ask in fetchedAsk">{{ask.title}}</div>-->
-    <p v-for="item in fetchedAsk">
-      <a :href="item.url">{{item.title}}</a>
-      <small>{{item.time_ago}} by {{item.domain}}</small>
-    </p>
+
+  <div v-for="item in fetched_ask">
+    <router-link to="'/${item.url}'">{{ item.title }}</router-link>
+    <small>
+      <router-link :to="`/user/${item.user}`">{{item.user}}</router-link>
+      by {{item.time_ago}}
+    </small>
   </div>
 </template>
 
 <script>
-import {mapState} from 'vuex';
+import {mapGetters} from 'vuex';
 
 export default {
   name: "AskView",
+  computed: {
+    ...mapGetters(['fetched_ask'])
+  },
   created() {
     this.$store.dispatch('FETCH_ASK');
-  },
-  computed : {
-    ...mapState({
-      fetchedAsk: state => state.ask
-    })
-
   }
-
 }
 </script>
 
