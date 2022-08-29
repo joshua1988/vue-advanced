@@ -2,7 +2,8 @@ import {
     fetchNewList,
     fetchAskList,
     fetchJobsList,
-    fetchUserInfo
+    fetchUserInfo,
+    fetchItemList
 } from "@/api/common";
 
 export default {
@@ -39,6 +40,15 @@ export default {
               commit('FETCHED_USER',response.data);
             })
             .catch(error =>{
+                console.log(error);
+            })
+    },
+    FETCH_ITEMS({commit}, userId){
+        fetchItemList(userId)
+            .then(response => {
+                commit('FETCHED_ITEMS', response.data);
+            })
+            .catch(error => {
                 console.log(error);
             })
     }

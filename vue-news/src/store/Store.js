@@ -9,6 +9,7 @@ const vuex = new createStore({
         jobs: [],
         ask: [],
         user: {},
+        item: [],
     },
     getters,
     mutations,
