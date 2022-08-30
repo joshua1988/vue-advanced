@@ -4,6 +4,7 @@ import AskView from '../views/AskView'
 import JobsView from '../views/JobsView'
 import ItemView from "../views/ItemView"
 import UserView from "../views/UserView";
+import HelloWorld from "@/components/HelloWorld";
 
 
 const router = new createRouter({
@@ -33,6 +34,10 @@ const router = new createRouter({
             path: '/user/:id',
             component : UserView
         },
+        {
+            path: '/hello',
+            component : HelloWorld
+        }
     ],
 
 })
